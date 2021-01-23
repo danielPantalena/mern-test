@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { validateAccount } from '../middlewares/validateAccount';
+import { generateErrorJSON } from '../functions';
 import {
   create,
   readAll,
@@ -9,16 +10,16 @@ import {
   deleteById,
 } from '../models/accountsModel';
 
-const accountsController = Router();
+const adminsController = Router();
 
-accountsController.post('/', validateAccount, async ({ body }: Request, res: Response) => {
+adminsController.post('/', validateAccount, async ({ body }: Request, res: Response) => {
   try {
     const createdAccount = await create(body);
-    res.status(201).json(createdAccount);
+    return res.status(201).json(createdAccount);
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({ error: true, message: 'Something wrong...' });
+    return res.status(500).json(generateErrorJSON(error.message));
   }
 });
 
-export default accountsController;
+export default adminsController;

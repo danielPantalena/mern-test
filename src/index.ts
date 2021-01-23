@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as dotenv from 'dotenv';
-import accountsController from './controllers/accountsController';
+import adminsController from './controllers/adminsController';
+import usersController from './controllers/usersController';
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/admin', accountsController);
+app.use('/admin', adminsController);
+app.use('/', usersController);
 
 app.listen(PORT, () => console.log(`Listening at PORT:${PORT}`));
