@@ -1,14 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { validateAccount } from '../middlewares/validateAccount';
 import { generateErrorJSON } from '../functions';
-import {
-  create,
-  readAll,
-  readOneById,
-  readOneByName,
-  updateById,
-  deleteById,
-} from '../models/accountsModel';
+import { create } from '../models/accountsModel';
 
 const adminsController = Router();
 
