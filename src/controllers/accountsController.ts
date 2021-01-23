@@ -4,7 +4,7 @@ import {
   create,
   readAll,
   readOneById,
-  readOneByUser,
+  readOneByName,
   updateById,
   deleteById,
 } from '../models/accountsModel';

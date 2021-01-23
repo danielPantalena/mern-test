@@ -13,8 +13,8 @@ export const readOneById = (id: string) => {
   return connection().then((db) => db.collection('accounts').findOne(new ObjectId(id)));
 };
 
-export const readOneByUser = (user: string) =>
-  connection().then((db) => db.collection('accounts').findOne({ user }));
+export const readOneByName = (name: string) =>
+  connection().then((db) => db.collection('accounts').findOne({ name }));
 
 export const updateById = (id: string, update: object) => {
   if (!ObjectId.isValid(id)) return null;
