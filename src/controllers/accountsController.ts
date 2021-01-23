@@ -15,10 +15,10 @@ const accountsController = Router();
 accountsController.post('/', validateAccount, async ({ body }: Request, res: Response) => {
   try {
     const createdAccount = await create(body);
-    res.status(201).json(createdAccount);
+    return res.status(201).json(createdAccount);
   } catch (error) {
     console.error(error.message);
-    res.status(500).json(generateErrorJSON(error.message));
+    return res.status(500).json(generateErrorJSON(error.message));
   }
 });
 
