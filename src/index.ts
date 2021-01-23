@@ -1,6 +1,6 @@
 import * as express from 'express';
-import { Request, Response } from 'express';
 import * as dotenv from 'dotenv';
+import accountsController from './controllers/accountsController';
 
 dotenv.config();
 
@@ -8,8 +8,8 @@ const PORT = process.env.PORT ?? 3000;
 
 const app = express();
 
-app.get('/', (_req: Request, res: Response) => {
-  res.send('Hi');
-});
+app.use(express.json());
+
+app.use('/admin', accountsController);
 
 app.listen(PORT, () => console.log(`Listening at PORT:${PORT}`));
