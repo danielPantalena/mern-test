@@ -3,8 +3,8 @@ import { readOneByToken } from '../models/pushNotificationsModel';
 import { generateErrorJSON } from '../functions';
 
 const validateToken = async (req: Request, res: Response, next: NextFunction) => {
-  const { token, message } = req.body;
-  if (!token || !message) return res.status(400).json(generateErrorJSON('Missing token or message'));
+  const { token } = req.body;
+  if (!token) return res.status(400).json(generateErrorJSON('Missing token'));
 
   try {
     const document = await readOneByToken(token);
