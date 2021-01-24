@@ -6,3 +6,6 @@ export const create = (document: object) =>
     .then((createdDocument) => createdDocument.ops[0]);
 
 export const readAll = () => connection().then((db) => db.collection('tokens').find().toArray());
+
+export const readOneByToken = (token: string) =>
+  connection().then((db) => db.collection('tokens').findOne({ token }));

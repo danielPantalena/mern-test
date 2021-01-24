@@ -2,12 +2,11 @@ import { Router, Request, Response } from 'express';
 import * as admin from 'firebase-admin';
 import { generateErrorJSON } from '../functions';
 import { create, readAll } from '../models/pushNotificationsModel';
+import validateToken from '../middlewares/validateToken';
 
 const pushNotificationsController = Router();
 
-pushNotificationsController.post('/', async ({ body }: Request, res: Response) => {
-  if (!body.token) return res.status(400).json(generateErrorJSON('Missing token'));
-
+pushNotificationsController.post('/', validateToken, async ({ body }: Request, res: Response) => {
   try {
     const createdToken = await create(body);
     return res.status(201).json(createdToken);
