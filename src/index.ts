@@ -1,7 +1,13 @@
 import * as express from 'express';
 import * as dotenv from 'dotenv';
 import * as cors from 'cors';
+import * as admin from 'firebase-admin';
 import { adminsController, usersController, pushNotificationsController } from './controllers';
+
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: 'https://danielpantalena-mern-test.firebaseio.com'
+});
 
 dotenv.config();
 
