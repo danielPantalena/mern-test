@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongodb';
 import connection from './connection';
 
 export const create = (document: object) =>
